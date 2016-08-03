@@ -1,8 +1,8 @@
 //
 //  GridProtocol.swift
-//  Assignment4
+//  FinalProject
 //
-//  Created by Daniel Sanchez on 7/14/16.
+//  Created by Daniel Sanchez on 7/30/16.
 //  Copyright © 2016 Squad. All rights reserved.
 //
 
@@ -20,7 +20,7 @@ enum CellState: String{
             return .Empty
         }
     }
-
+    
 }
 
 
@@ -40,24 +40,24 @@ protocol ExampleDelegateProtocol {
 
 
 class Grid: GridProtocol {
-     required init(rows: Int, cols: Int){
+    required init(rows: Int, cols: Int){
         self.rows = rows
         self.cols = cols
     }
-        var rows: Int {
-            didSet {
-                if let delegate = delegate {
-                    delegate.example(self, didUpdateRows: self.rows)
-                }
+    var rows: Int {
+        didSet {
+            if let delegate = delegate {
+                delegate.example(self, didUpdateRows: self.rows)
             }
         }
-        var cols: Int {
-            didSet {
-                if let delegate = delegate {
-                    delegate.example(self, didUpdateColumns: self.cols)
-                }
+    }
+    var cols: Int {
+        didSet {
+            if let delegate = delegate {
+                delegate.example(self, didUpdateColumns: self.cols)
             }
         }
+    }
     var delegate: ExampleDelegateProtocol?
     func neighbors(coordinates: (Int, Int)) ->([(Int, Int)]){
         let prevRow = (coordinates.0 + rows - 1) % rows // =9
@@ -91,17 +91,17 @@ class Grid: GridProtocol {
         //        }
         return _sharedInstance
     }
-subscript(row: Int, col: Int) -> CellState? {
-    get {
-        if grid.count < Int(row*col) { return nil }
-        return grid[Int(row * col + col)]
-    }
-    set (newValue) {
-        if newValue == nil { return }
-        if row < 0 || row >= rows || col < 0 || col >= cols { return }
-        let cellRow = row * cols + col
-        grid[Int(cellRow)] = newValue!
-    }
+    subscript(row: Int, col: Int) -> CellState? {
+        get {
+            if grid.count < Int(row*col) { return nil }
+            return grid[Int(row * col + col)]
+        }
+        set (newValue) {
+            if newValue == nil { return }
+            if row < 0 || row >= rows || col < 0 || col >= cols { return }
+            let cellRow = row * cols + col
+            grid[Int(cellRow)] = newValue!
+        }
     }//struct Rectangle: GridProtocol {
     //    init(rows: Int, cols: Int){
     //        self.rows = rows

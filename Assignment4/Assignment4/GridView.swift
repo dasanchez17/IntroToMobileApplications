@@ -120,11 +120,11 @@ class GridView: UIView {
              grid[a][b] = .Living
              count+=1
              }
-             }
+             }danny boy
              }*/
             for index in 0...rows{
                 for index2 in 0...cols{
-                    let paths = UIBezierPath(arcCenter: CGPoint(x: CGFloat(index)*bounds.width/CGFloat(rows)-bounds.width/(CGFloat(rows)*2.0),y: CGFloat(index2)*bounds.width/CGFloat(cols)-bounds.width/(CGFloat(cols)*2.0)), radius: bounds.width/CGFloat(rows)/3.9, startAngle: CGFloat(0), endAngle:CGFloat(M_PI * 2), clockwise: true)
+                    let paths = UIBezierPath(arcCenter: CGPoint(x: CGFloat(index)*bounds.width/CGFloat(rows)-bounds.width/(CGFloat(rows)*2.0),y: CGFloat(index2)*bounds.width/CGFloat(cols)-bounds.width/(CGFloat(cols)*2.0)), radius: bounds.width/CGFloat(rows)/2.5, startAngle: CGFloat(0), endAngle:CGFloat(M_PI * 2), clockwise: true)
                     switch grid[index][index2] == .Living{
                     case true:
                         livingColor!.setFill()
